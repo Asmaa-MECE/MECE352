@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MECE 352 Lecture 2 Quiz</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--bg:#f6f7fb;--card:#fff;--fg:#1c2230;--mut:#667085;--bd:#dde1ea;--ac:#3b5bdb;--ok:#2b8a3e;--okb:#e6f6ea;--no:#c92a2a;--nob:#fdeaea}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#13161d;--card:#1c212b;--fg:#e8ebf2;--mut:#98a2b3;--bd:#2f3646;--ac:#7c97ff;--ok:#69db7c;--okb:#173222;--no:#ff8787;--nob:#3a1b1b}}
+:root[data-theme="dark"]{--bg:#13161d;--card:#1c212b;--fg:#e8ebf2;--mut:#98a2b3;--bd:#2f3646;--ac:#7c97ff;--ok:#69db7c;--okb:#173222;--no:#ff8787;--nob:#3a1b1b}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:720px;margin:0 auto;padding:20px 16px 48px}
+h1{font-size:1.5rem;margin:0 0 4px}
+.sub{color:var(--mut);margin:0 0 20px}
+.q{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:16px;margin-bottom:14px}
+.q h3{font-size:1rem;margin:0 0 10px}
+.q h3 span{color:var(--ac);margin-right:6px}
+label{display:flex;gap:10px;align-items:flex-start;padding:9px 11px;border:1px solid var(--bd);border-radius:8px;margin-top:7px;cursor:pointer}
+label:hover{border-color:var(--ac)}
+label.ok{background:var(--okb);border-color:var(--ok)}
+label.no{background:var(--nob);border-color:var(--no)}
+input{margin-top:5px}
+button{font:inherit;font-weight:600;background:var(--ac);color:#fff;border:0;border-radius:10px;padding:11px 20px;cursor:pointer}
+button.alt{background:transparent;color:var(--ac);border:1px solid var(--ac)}
+.bar{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+#score{position:sticky;top:env(safe-area-inset-top,0px);z-index:2;background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:16px;margin-bottom:14px;font-size:1.15rem;font-weight:600}
+.n{color:var(--mut);font-size:.9rem;margin-top:8px}
+</style>
+</head>
+<body>
+<main>
+<h1>MECE 352 — Lecture 2 Quiz</h1>
+<p class="sub">Mathematical Modelling &amp; Transfer Function · 15 random questions from a bank of 50</p>
+<div id="score"></div>
+<div id="quiz"></div>
+<div class="bar">
+<button id="new" class="alt">New random 15</button>
+</div>
+</main>
+<script>
+const B=[
+["What is a mathematical model of a dynamic system?",["A physical prototype of the system","A set of equations representing the system dynamics","A computer program only","A graphical representation only"],1],
+["Which statement about mathematical models is correct?",["Every system has only one mathematical model","A mathematical model must always be nonlinear","A system can be represented in many different ways","Mathematical models cannot represent dynamic systems"],2],
+["Which of the following systems can be described using differential equations?",["Mechanical systems only","Electrical systems only","Thermal systems only","Mechanical, electrical, thermal, economic, and biological systems"],3],
+["Differential equations describing systems can be:",["Only linear","Only nonlinear","Linear or nonlinear","Neither linear nor nonlinear"],2],
+["Some nonlinear systems can be:",["Removed completely","Linearized","Made time-invariant automatically","Converted directly into digital systems"],1],
+["A system is linear if:",["Its coefficients change with time","Superposition holds","It contains nonlinear terms","Its output is always zero"],1],
+["What is the main physical meaning of time invariance?",["The input never changes","The output never changes","The system itself does not change with time","The system must be linear"],2],
+["A circuit with fixed R, L, and C is considered:",["Nonlinear","Time-varying","Time-invariant","Discrete-time"],2],
+["A circuit with a variable capacitance C is:",["Time-invariant","Time-varying","Always nonlinear","Always unstable"],1],
+["A continuous-time system described by a linear differential equation with constant coefficients is:",["Nonlinear time-varying","LTI","Discrete-time nonlinear","Improper"],1],
+["Constant coefficients in a differential equation indicate:",["Linearity","Time invariance","Instability","Feedback"],1],
+["The absence of nonlinear terms indicates:",["Time invariance","Linearity","Instability","Feedback"],1],
+["Which combination defines an LTI system?",["Nonlinear + time-varying","Linear + time-varying","Nonlinear + time-invariant","Linear + time-invariant"],3],
+["Why is the Laplace transform useful in control systems?",["It converts algebraic equations into physical systems","It converts differential equations into algebraic equations","It eliminates all initial conditions","It converts every system into a nonlinear system"],1],
+["The Laplace transform generally converts a problem from:",["Frequency domain to time domain","Time domain to the s-domain / frequency-domain representation","Physical domain to mechanical domain","Digital domain to analog domain"],1],
+["After applying the Laplace transform, the original differential equation becomes:",["A graphical equation","An algebraic equation in s","A nonlinear equation only","A state-space equation only"],1],
+["To obtain a time-domain solution after solving in the s-domain, we use:",["Laplace transform","Fourier transform","Inverse Laplace transform","Partial differentiation"],2],
+["The Laplace transform is particularly useful when:",["There are no inputs","The system has initial conditions and an input is applied at t = 0","The system is always nonlinear","The output is unknown but the input is zero"],1],
+["For an input applied at t = 0, the lecture states:",["x(t) = 1 for t < 0","x(t) = 0 for t < 0","x(t) = t for t < 0","x(t) = ∞ for t < 0"],1],
+["The inverse Laplace transform converts:",["f(t) → F(s)","F(s) → f(t)","G(s) → H(s)","R(s) → C(s)"],1],
+["A ratio of two polynomials in s is called a:",["Differential equation","Rational function","State variable","Time constant"],1],
+["Why is Partial Fraction Expansion useful?",["To make a complicated rational function easier to inverse-transform","To make a system nonlinear","To eliminate the transfer function","To change a time-invariant system into a time-varying system"],0],
+["Partial Fraction Expansion breaks a complicated rational function into:",["More complicated differential equations","Simpler forms that can be matched with Laplace tables","Physical components","State variables only"],1],
+["Which sequence correctly describes solving an LTI differential equation using Laplace transforms?",["Inverse Laplace → Laplace → rearrange","Laplace → rearrange → inverse Laplace","Rearrange → inverse Laplace → Laplace","Laplace → differentiate → integrate"],1],
+["In the first step of solving an LTI differential equation, we:",["Find the poles","Take the Laplace transform of each term","Draw a block diagram","Find the feedback gain"],1],
+["In the second step, we:",["Find the physical structure","Obtain the expression for the Laplace transform of the dependent variable","Convert the system to state-space","Find the input experimentally"],1],
+["In the third step, we:",["Find the inverse Laplace transform","Apply another Laplace transform","Change the coefficients","Linearize the system"],0],
+["What is the characteristic equation?",["G(s) = 0","H(s) = 0","aₙsⁿ + aₙ₋₁sⁿ⁻¹ + … + a₁s + a₀ = 0","C(s) = R(s)"],2],
+["The roots of the characteristic equation are the system's:",["Zeros","Inputs","Poles","Outputs"],2],
+["For non-repeated poles, the zero-input response can be written as:",["y(t) = ΣC_k e^(s_k t)","y(t) = G(s)H(s)","y(t) = R(s) − C(s)","y(t) = A(s) + B(s)"],0],
+["The coefficients C₁, C₂, …, Cₙ in the zero-input response are obtained from:",["Transfer function degree","Initial conditions","Feedback gain only","Input frequency only"],1],
+["The zero-input response is also called the:",["Particular response","Forced response","Homogeneous response","Frequency response"],2],
+["A system is stable if its homogeneous response:",["Goes to infinity","Remains constant for all conditions","Converges to zero for all initial conditions","Oscillates forever"],2],
+["For a stable system, all poles should have:",["Positive real parts","Zero real parts","Negative real parts","Infinite real parts"],2],
+["A transfer function is:",["A physical component","A mathematical model of a system","An input signal","A type of sensor"],1],
+["The transfer function is a property of:",["The input signal only","The system","The initial condition only","The measurement instrument only"],1],
+["The transfer function is:",["Dependent on the particular input signal","Independent of the input signal","Independent of the system","Always dependent on temperature"],1],
+["A transfer function does NOT provide information about:",["The mathematical input-output relationship","The physical structure of the system","The system model","The system response to inputs"],1],
+["If the transfer function is known, we can:",["Study the output for different inputs","Determine the physical construction exactly","Guarantee instability","Remove the system poles"],0],
+["If a transfer function is unknown, it can be identified experimentally by:",["Changing the physical structure randomly","Applying known inputs and studying the output","Removing the input","Ignoring the output"],1],
+["A transfer function is strictly proper when: (n = denominator degree, m = numerator degree)",["n < m","n = m","n > m","n = 0"],2],
+["A transfer function is proper when: (n = denominator degree, m = numerator degree)",["n > m","n = m","n < m","m = 0"],1],
+["A transfer function is improper when: (n = denominator degree, m = numerator degree)",["n > m","n = m","n < m","n = 1"],2],
+["Physical systems are generally:",["Improper only","Proper or strictly proper","Always improper","Neither proper nor improper"],1],
+["In a block diagram, a subsystem can be represented by a block containing:",["Only an input","Only an output","Input, output, and transfer function","Only a feedback signal"],2],
+["In cascade form, interconnected subsystems are assumed to:",["Load adjacent subsystems","Not load adjacent subsystems","Always be nonlinear","Have zero transfer functions"],1],
+["Which MATLAB command represents a series/cascade connection?",["parallel(G1,G2)","feedback(G,H,±1)","series(G1,G2)","laplace(G1,G2)"],2],
+["Which MATLAB command represents a parallel connection?",["series(G1,G2)","parallel(G1,G2)","feedback(G,H,±1)","inverse(G1,G2)"],1],
+["For a negative-feedback system, the closed-loop transfer function is:",["G(s) / (1 − G(s)H(s))","H(s) / (1 + G(s))","G(s) / (1 + G(s)H(s))","G(s) + H(s)"],2],
+["In the potentiometer case study, when the potentiometer is at the center position:",["Output voltage is +10 V","Output voltage is −10 V","Output voltage is zero","Output voltage is infinite"],2]
+];
+const L="ABCD",N=15;
+const quiz=document.getElementById("quiz"),sc=document.getElementById("score");
+let set=[];
+function gen(){
+  const a=B.map((_,i)=>i);
+  for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}
+  set=a.slice(0,N).map(i=>B[i]);ans=0;cor=0;upd();sc.hidden=false;quiz.textContent="";
+  set.forEach((q,i)=>{
+    const d=document.createElement("div");d.className="q";
+    const h=document.createElement("h3"),s=document.createElement("span");
+    s.textContent=(i+1)+".";h.append(s,q[0]);d.append(h);
+    q[1].forEach((t,k)=>{
+      const l=document.createElement("label"),r=document.createElement("input");
+      r.type="radio";r.name="q"+i;r.value=k;
+      r.onchange=()=>grade(i,k);l.append(r,L[k]+". "+t);d.append(l);
+    });
+    quiz.append(d);
+  });
+  window.scrollTo(0,0);
+}
+let ans=0,cor=0;
+function upd(fin){
+  sc.textContent=fin?("Finished! Final score: "+cor+" / "+N+" ("+Math.round(cor/N*100)+"%)"):("Answered "+ans+" / "+N+" · Correct "+cor);
+}
+function grade(i,k){
+  const q=set[i],d=quiz.children[i],ls=d.querySelectorAll("label");
+  ls.forEach(l=>l.querySelector("input").disabled=true);
+  ls[q[2]].classList.add("ok");
+  const m=document.createElement("div");m.className="n";
+  ans++;
+  if(k===q[2]){cor++;m.textContent="✓ Correct!"}
+  else{ls[k].classList.add("no");m.textContent="✗ Incorrect — correct answer: "+L[q[2]]+". "+q[1][q[2]]}
+  d.append(m);upd(ans===N);
+}
+document.getElementById("new").onclick=gen;
+gen();
+</script>
+</body>
+</html>
