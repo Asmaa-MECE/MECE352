@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>MECE 352 Lecture 2 Quiz</title>
+<title>MECE 352 Lectures 1 &amp; 2 Quiz</title>
 <style>
 :root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
 --bg:#f6f7fb;--card:#fff;--fg:#1c2230;--mut:#667085;--bd:#dde1ea;--ac:#3b5bdb;--ok:#2b8a3e;--okb:#e6f6ea;--no:#c92a2a;--nob:#fdeaea}
@@ -32,8 +32,8 @@ button.alt{background:transparent;color:var(--ac);border:1px solid var(--ac)}
 </head>
 <body>
 <main>
-<h1>MECE 352 — Lecture 2 Quiz</h1>
-<p class="sub">Mathematical Modelling &amp; Transfer Function · 15 random questions from a bank of 50</p>
+<h1>MECE 352 — Lectures 1 &amp; 2 Quiz</h1>
+<p class="sub">Control Systems Intro · Mathematical Modelling &amp; Transfer Function · 15 random questions from a bank of 100</p>
 <div id="score"></div>
 <div id="quiz"></div>
 <div class="bar">
@@ -91,7 +91,57 @@ const B=[
 ["Which MATLAB command represents a series/cascade connection?",["parallel(G1,G2)","feedback(G,H,±1)","series(G1,G2)","laplace(G1,G2)"],2],
 ["Which MATLAB command represents a parallel connection?",["series(G1,G2)","parallel(G1,G2)","feedback(G,H,±1)","inverse(G1,G2)"],1],
 ["For a negative-feedback system, the closed-loop transfer function is:",["G(s) / (1 − G(s)H(s))","H(s) / (1 + G(s))","G(s) / (1 + G(s)H(s))","G(s) + H(s)"],2],
-["In the potentiometer case study, when the potentiometer is at the center position:",["Output voltage is +10 V","Output voltage is −10 V","Output voltage is zero","Output voltage is infinite"],2]
+["In the potentiometer case study, when the potentiometer is at the center position:",["Output voltage is +10 V","Output voltage is −10 V","Output voltage is zero","Output voltage is infinite"],2],
+["What is the primary purpose of a control system?", ["To increase the physical size of a system", "To obtain a desired output with desired performance", "To eliminate all sensors", "To operate only mechanical systems"], 1],
+["Which component is the system or group of components being controlled?", ["Controller", "Sensor", "Process", "Actuator"], 2],
+["Which component is responsible for controlling the process?", ["Controller", "Process", "Disturbance", "Reference"], 0],
+["What does the term feedback refer to?", ["Increasing the input without measuring the output", "Connecting systems so that they influence each other", "Removing the controller from a system", "Applying power directly to the output"], 1],
+["Which statement correctly describes an open-loop control system?", ["The output affects the control action", "The output is continuously compared with the reference", "The output has no effect on the control action", "It always rejects disturbances"], 2],
+["Which of the following is an example of an open-loop system mentioned in the lecture?", ["Tachometer speed control", "Washing machine", "Blood glucose regulation", "ABS"], 1],
+["Why are open-loop systems sensitive to disturbances?", ["They have too many sensors", "They continuously measure disturbances", "They cannot use output feedback to correct their effects", "They always have excessive gain"], 2],
+["Which characteristic is generally associated with a closed-loop system?", ["No output measurement", "No error correction", "Feedback of the measured output", "Complete insensitivity to every disturbance"], 2],
+["A closed-loop system compares the measured output with:", ["The disturbance", "The desired/reference output", "The actuator power", "The sensor noise only"], 1],
+["Compared with open-loop systems, closed-loop systems are generally:", ["Less accurate", "More sensitive to disturbances", "More accurate and relatively insensitive to disturbances", "Unable to correct errors"], 2],
+["In the rotating-disc speed example, what happens in the open-loop system when speed changes unexpectedly?", ["The error is automatically corrected", "The speed error is not corrected", "The tachometer immediately compensates", "The system becomes closed-loop"], 1],
+["What is the main role of a tachometer in the closed-loop speed-control example?", ["To provide feedback related to speed", "To eliminate the controller", "To increase the disturbance", "To replace the actuator"], 0],
+["Which is an advantage of control systems?", ["Reduced precision", "High-precision performance", "Elimination of all disturbances", "Elimination of all system components"], 1],
+["Control systems can provide:", ["Power gain", "Only mechanical gain", "Only temperature gain", "No gain at all"], 0],
+["Why are control systems useful in remote or dangerous locations?", ["They eliminate the need for electricity", "They allow control/operation where human access may be difficult or dangerous", "They always operate without sensors", "They only work in laboratories"], 1],
+["What is meant by compensation for disturbances?", ["Ignoring disturbances", "Producing the correct output despite disturbances", "Increasing disturbances", "Removing the process"], 1],
+["The historical water-clock example demonstrates the control of:", ["Motor speed", "Temperature", "Water level", "Vehicle position"], 2],
+["In the water-level example, the float valve helps:", ["Maintain the regulating tank at a constant level", "Increase water disturbances", "Eliminate water flow", "Measure temperature"], 0],
+["Which of the following is an example of a modern control application?", ["Mars rover", "Mechanical ruler", "Ordinary chair", "Passive book"], 0],
+["Which of the following is NOT listed as an active safety control for automobiles?", ["ABS", "Traction Control", "Electronic Stability Control", "Manual transmission"], 3],
+["What is one of the main objectives of ABS?", ["Increase wheel locking", "Minimize stopping distance under braking", "Eliminate vehicle control", "Increase uncontrolled braking"], 1],
+["Why does ABS aim to prevent wheel locking?", ["To maintain vehicle drivability", "To increase stopping distance", "To eliminate braking", "To increase wheel speed indefinitely"], 0],
+["Blood/sugar regulation is an example of:", ["A biological control system", "An open-loop mechanical system", "An industrial actuator only", "A feedforward-only system"], 0],
+["When glucose level rises, the body releases:", ["Glucagon", "Insulin", "Oxygen", "Water"], 1],
+["When glucose levels are low, the pancreas secretes:", ["Insulin", "Glucagon", "Water", "Adrenaline"], 1],
+["Which of the following is an advantage of feedback control?", ["It can make a system more robust to external influences", "It always causes instability", "It always increases sensor noise", "It eliminates the need for a controller"], 0],
+["Feedback can make a system less sensitive to:", ["External disturbances and variations in individual elements", "Only the reference signal", "Only the controller", "Nothing"], 0],
+["Feedback can sometimes be used to create:", ["Nonlinear behavior from linear components only", "Linear behavior from nonlinear components", "Random behavior", "Uncontrolled behavior"], 1],
+["Which is a potential disadvantage of feedback?", ["Increased robustness", "Improved modularity", "Dynamic instability", "Better disturbance rejection"], 2],
+["Poorly designed feedback can result in:", ["Oscillations or runaway behavior", "Perfect stability", "Zero sensor noise", "No dynamic response"], 0],
+["Why can feedback introduce sensor noise?", ["Because the measured signal is fed back into the system", "Because feedback eliminates sensors", "Because the controller is removed", "Because the reference is always zero"], 0],
+["Which of the following is one of the main goals of a control system?", ["Stability", "Complexity", "Noise", "Oscillation"], 0],
+["What does stability mean in the context of the lecture?", ["The system responds as slowly as possible", "The system maintains the desired operating point", "The system always changes its operating point", "The system ignores its output"], 1],
+["What does performance refer to?", ["How rapidly the system responds to changes", "How large the controller is", "How many sensors are installed", "How much noise the system produces"], 0],
+["What does robustness mean?", ["The ability to tolerate perturbations or uncertainty in system dynamics", "The ability to eliminate all sensors", "The ability to increase disturbances", "The ability to operate only at one exact condition"], 0],
+["A vehicle experiences changes in mass and aerodynamic drag. Which control-system property is particularly important?", ["Robustness", "Oscillation", "Open-loop operation", "On-off switching"], 0],
+["Feedback can be used to change:", ["Only the input", "The dynamics/behavior of a system", "Only the physical dimensions", "Only the sensor type"], 1],
+["According to the lecture, feedback can potentially:", ["Stabilize unstable systems", "Make every system unstable", "Eliminate all system dynamics", "Prevent any response to inputs"], 0],
+["A sluggish system can potentially be made more responsive through:", ["Feedback", "Removing the controller", "Removing the output", "Open-loop operation only"], 0],
+["What is one benefit of modularity through feedback?", ["A complex system can be divided into subsystems with clear input/output behavior", "Every component must be redesigned simultaneously", "Components cannot be replaced", "The system becomes impossible to maintain"], 0],
+["A modular system is advantageous because:", ["Changing one component may not require redesigning the entire system", "Every component must be permanently fixed", "It eliminates all feedback", "It prevents system upgrades"], 0],
+["What is the simplest type of feedback control discussed in the lecture?", ["PID", "On-off control", "Integral control", "Derivative control"], 1],
+["On-off control is also known as:", ["Continuous control", "Bang-bang control", "Adaptive control", "Linear control"], 1],
+["How many controller output states does basic on-off control have?", ["One", "Two", "Three", "Infinitely many"], 1],
+["In an on-off heating system, when room temperature falls below the setpoint, the furnace:", ["Turns off", "Turns on", "Does nothing permanently", "Changes to proportional control"], 1],
+["Why does on-off control often produce temperature oscillations?", ["The controller changes the actuated variable over the full range in response to relatively small errors", "The controller never changes its output", "The sensor is always disconnected", "The system has no setpoint"], 0],
+["What is the main idea behind proportional control?", ["The control output changes proportionally to the error", "The control output has only two states", "The output never changes", "The system ignores the error"], 0],
+["In proportional control, what happens when the error becomes larger?", ["The controller response becomes larger", "The controller response becomes zero", "The controller always turns completely off", "The controller stops measuring"], 0],
+["What are the three components represented by PID?", ["Position, Input, Disturbance", "Proportional, Integral, Derivative", "Process, Input, Dynamics", "Power, Insulation, Design"], 1],
+["According to the lecture, why are many industrial controllers actually PI rather than full PID controllers?", ["Derivative action is often not included", "Proportional action is never used", "Integral action cannot be used", "PID cannot be used in industry"], 0]
 ];
 const L="ABCD",N=15;
 const quiz=document.getElementById("quiz"),sc=document.getElementById("score");
